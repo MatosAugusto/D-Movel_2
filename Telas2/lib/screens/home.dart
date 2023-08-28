@@ -7,7 +7,7 @@ import 'package:telas2/components/meses_home.dart';
 //import 'package:telas2/components/task.dart';
 import 'package:telas2/screens/infos.dart';
 import '../data/Event.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        title: const Text('Pesquisar Eventos'),
+        title: Text(AppLocalizations.of(context).pesquisar_evento),
         actions: [
           BarraPesquisa(),
         ],
@@ -77,31 +77,31 @@ class _HomeState extends State<Home> {
                     List<Event>? items = snapshot.data;
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
-                        return const Center(
+                        return Center(
                           child: Column(
                             children: [
                               CircularProgressIndicator(),
-                              Text('Carregando')
+                              Text(AppLocalizations.of(context).carregando)
                             ],
                           ),
                         );
 
                       case ConnectionState.waiting:
-                        return const Center(
+                        return Center(
                           child: Column(
                             children: [
                               CircularProgressIndicator(),
-                              Text('Carregando')
+                              Text(AppLocalizations.of(context).carregando)
                             ],
                           ),
                         );
 
                       case ConnectionState.active:
-                        return const Center(
+                        return Center(
                           child: Column(
                             children: [
                               CircularProgressIndicator(),
-                              Text('Carregando')
+                              Text(AppLocalizations.of(context).carregando)
                             ],
                           ),
                         );

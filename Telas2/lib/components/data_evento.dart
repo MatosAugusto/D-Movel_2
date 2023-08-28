@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DatePickerExample extends StatefulWidget {
   final Function(String) onDateSelected;
@@ -44,11 +45,11 @@ class DatePickerExampleState extends State<DatePickerExample> {
           controller: dateController = TextEditingController(
             text: "${_selectedDate.toLocal()}".split(' ')[0],
           ),
-          decoration: const InputDecoration(
-            labelText: 'Selecionar Data',
+          decoration: InputDecoration(
+            labelText: AppLocalizations.of(context).selecionar_data,
             floatingLabelAlignment: FloatingLabelAlignment.center,
             border: OutlineInputBorder(),
-            hintText: 'Definir Data',
+            hintText: AppLocalizations.of(context).definir_data,
             fillColor: Colors.white70,
             filled: true,
           ),

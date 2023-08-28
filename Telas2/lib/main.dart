@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telas2/screens/home.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,15 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('en'), // English
-        Locale('pt'), // Português
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: MyHomePage(),
     );
   }
@@ -41,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     // Coloque aqui os widgets das telas que deseja exibir
     Home(),
-    Text('Pedidos'),
+    Text('Ingressos'),
     Text('Perfil'),
   ];
 
@@ -58,27 +51,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.home,
               color: Colors.blue,
             ),
-            label: 'Home',
+            label: AppLocalizations.of(context).inicio,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.airplane_ticket,
               color: Colors.blue,
             ),
-            label: 'Ingressos',
+            label: AppLocalizations.of(context).ingressos,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.person,
               color: Colors.blue,
             ),
-            label: 'Perfil',
+            label: AppLocalizations.of(context).perfil,
           ),
         ],
         currentIndex: _selectedIndex,

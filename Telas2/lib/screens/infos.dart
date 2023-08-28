@@ -51,7 +51,7 @@
 import 'package:flutter/material.dart';
 import '../data/EventDAO.dart';
 import '../data/Event.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Infos extends StatefulWidget {
   final String titulo;
@@ -115,7 +115,7 @@ class _InfosState extends State<Infos> {
           },
           icon: Icon(Icons.arrow_back),
         ),
-        title: Text('Informações do Evento'),
+        title: Text(AppLocalizations.of(context).informacoes_evento),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -133,8 +133,8 @@ class _InfosState extends State<Infos> {
                     controller: titleController,
                     style: TextStyle(color: Colors.black),
                     // Text color
-                    decoration: const InputDecoration(
-                      labelText: 'Titulo do Evento',
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).titulo_evento,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,
@@ -150,9 +150,9 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: dateController,
-                    style: TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
-                      labelText: 'Data do Evento',
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).data_evento,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,
@@ -168,9 +168,9 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: hourController,
-                    style: TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
-                      labelText: 'Hora do Evento',
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).hora_evento,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,
@@ -186,9 +186,9 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: localController,
-                    style: TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
-                      labelText: 'Localização',
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).localizacao,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,
@@ -204,9 +204,9 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: descriptionController,
-                    style: TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
-                      labelText: 'Descricao',
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).descricao,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,
@@ -222,9 +222,9 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: contactController,
-                    style: TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
-                      labelText: 'Contato',
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).contato,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,
@@ -240,9 +240,9 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: nameController,
-                    style: TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
-                      labelText: 'Nome do Contato',
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context).nomecontato,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       border: OutlineInputBorder(),
                       fillColor: Colors.white70,

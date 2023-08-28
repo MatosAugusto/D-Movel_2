@@ -6,7 +6,7 @@ import 'package:telas2/components/horario_evento.dart';
 // import 'package:telas2/data/task_dao.dart';
 // import 'package:telas2/components/task.dart';
 import 'package:telas2/data/EventDAO.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CadastroEvento extends StatefulWidget {
   const CadastroEvento({super.key});
@@ -43,7 +43,7 @@ class _CadastroEventoState extends State<CadastroEvento> {
                 Navigator.pop(context);
               },
               icon: const Icon(Icons.arrow_back)),
-          title: const Text('Cadastrar Novo Evento'),
+          title: Text(AppLocalizations.of(context).cadastrar_evento),
         ),
         body: Center(
           child: SingleChildScrollView(
@@ -56,16 +56,16 @@ class _CadastroEventoState extends State<CadastroEvento> {
                   child: TextFormField(
                     controller: titleController,
                     textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Título do Evento',
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: AppLocalizations.of(context).titulo_evento,
                       fillColor: Colors.white70,
                       filled: true,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: <Widget>[
                       DatePickerExample(
@@ -95,9 +95,9 @@ class _CadastroEventoState extends State<CadastroEvento> {
                   child: TextFormField(
                     controller: localController,
                     textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Localização',
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: AppLocalizations.of(context).localizacao,
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -108,9 +108,9 @@ class _CadastroEventoState extends State<CadastroEvento> {
                   child: TextFormField(
                     controller: descriptionController,
                     textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Descrição',
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: AppLocalizations.of(context).descricao,
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -121,9 +121,9 @@ class _CadastroEventoState extends State<CadastroEvento> {
                   child: TextFormField(
                     controller: contactController,
                     textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Contato',
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: AppLocalizations.of(context).contato,
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -134,9 +134,9 @@ class _CadastroEventoState extends State<CadastroEvento> {
                   child: TextFormField(
                     controller: nameController,
                     textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Nome do Contato',
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: AppLocalizations.of(context).nomecontato,
                       fillColor: Colors.white70,
                       filled: true,
                     ),

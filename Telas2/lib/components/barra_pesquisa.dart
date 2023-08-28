@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:telas2/screens/infos.dart';
 import '../data/Event.dart';
 import '../data/EventDAO.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BarraPesquisa extends StatefulWidget {
   const BarraPesquisa({super.key});
@@ -51,7 +52,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
     if (query.isEmpty) {
       return Center(
-        child: Text('Por favor, insira uma consulta de pesquisa.'),
+        child: Text(AppLocalizations.of(context).insira_consulta),
       );
     }
     // Implemente a lógica de pesquisa e exiba os resultados reais aqui
@@ -72,7 +73,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     if (query.isEmpty) {
       return Center(
-        child: Text('Sugestões de pesquisa'),
+        child: Text(AppLocalizations.of(context).sugestao_pesquisa),
       );
     } else {
       print("A query:" + query);
@@ -109,7 +110,8 @@ class SearchBarDelegate extends SearchDelegate<String> {
               },
             );
           } else if (snapshot.hasError) {
-            return Center(child: Text('Erro ao buscar sugestões.'));
+            return Center(
+                child: Text(AppLocalizations.of(context).erro_sugestao));
           } else {
             return Center(child: CircularProgressIndicator());
           }

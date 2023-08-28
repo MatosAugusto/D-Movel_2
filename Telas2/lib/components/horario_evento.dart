@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TimePickerExample extends StatefulWidget {
   final Function(String) onHourSelected;
@@ -42,12 +43,12 @@ class TimePickerExampleState extends State<TimePickerExample> {
           controller: hourController = TextEditingController(
             text: "${_selectedTime.format(context)}",
           ),
-          decoration: const InputDecoration(
-            labelText: 'Selecionar Horário',
+          decoration: InputDecoration(
+            labelText: AppLocalizations.of(context).hora_evento,
             floatingLabelAlignment: FloatingLabelAlignment.center,
             //suffixIcon: Icon(Icons.access_time),
             border: OutlineInputBorder(),
-            hintText: 'Definir Horário',
+            hintText: AppLocalizations.of(context).definir_hora,
             fillColor: Colors.white70,
             filled: true,
           ),

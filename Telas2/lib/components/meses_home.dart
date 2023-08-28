@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MonthYearSelector extends StatefulWidget {
   final Function(String year, String month) onDateChanged;
@@ -15,7 +16,8 @@ class MonthYearSelectorState extends State<MonthYearSelector> {
   void _changeMonth(int change) {
     setState(() {
       selectedDate = DateTime(selectedDate.year, selectedDate.month + change);
-      widget.onDateChanged(selectedDate.year.toString(), selectedDate.month.toString().padLeft(2, '0'));
+      widget.onDateChanged(selectedDate.year.toString(),
+          selectedDate.month.toString().padLeft(2, '0'));
     });
   }
 
@@ -46,18 +48,18 @@ class MonthYearSelectorState extends State<MonthYearSelector> {
 
   String _getMonthName(int month) {
     final months = [
-      'Janeiro',
-      'Fevereiro',
-      'Março',
-      'Abril',
-      'Maio',
-      'Junho',
-      'Julho',
-      'Agosto',
-      'Setembro',
-      'Outubro',
-      'Novembro',
-      'Dezembro'
+      AppLocalizations.of(context).janeiro,
+      AppLocalizations.of(context).fevereiro,
+      AppLocalizations.of(context).marco,
+      AppLocalizations.of(context).abril,
+      AppLocalizations.of(context).maio,
+      AppLocalizations.of(context).junho,
+      AppLocalizations.of(context).julho,
+      AppLocalizations.of(context).agosto,
+      AppLocalizations.of(context).setembro,
+      AppLocalizations.of(context).outubro,
+      AppLocalizations.of(context).novembro,
+      AppLocalizations.of(context).dezembro
     ];
     return months[month - 1];
   }
