@@ -134,7 +134,9 @@ class EventDAO {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load event');
+      //throw Exception('Failed to load event'); //Foi removido para não dar erro de exceção antes de completar a palavra
+      final List<dynamic> eventsList = jsonDecode(response.body);
+      return eventsList.map((eventMap) => Event.fromJson(eventMap)).toList();
     }
   }
 
@@ -218,7 +220,8 @@ class EventDAO {
     final response = await http
         .get(Uri.parse('http://10.0.2.2:3000/event?month=$month&year=$year'));
 
-    if (response.statusCode == 200) {
+    //Caso não encontre evento, retorna vazio
+    if (response.statusCode == 200 || response.statusCode == 404) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       final List<dynamic> eventsList = jsonDecode(response.body);

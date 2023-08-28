@@ -51,6 +51,7 @@
 import 'package:flutter/material.dart';
 import '../data/EventDAO.dart';
 import '../data/Event.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Infos extends StatefulWidget {
   final String titulo;

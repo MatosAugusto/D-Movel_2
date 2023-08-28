@@ -6,6 +6,7 @@ import 'package:telas2/components/horario_evento.dart';
 // import 'package:telas2/data/task_dao.dart';
 // import 'package:telas2/components/task.dart';
 import 'package:telas2/data/EventDAO.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class CadastroEvento extends StatefulWidget {
   const CadastroEvento({super.key});

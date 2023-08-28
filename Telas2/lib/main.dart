@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telas2/screens/home.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +12,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Event',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('pt'), // Português
+      ],
       home: MyHomePage(),
     );
   }
@@ -50,15 +60,24 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,color: Colors.blue,),
+            icon: Icon(
+              Icons.home,
+              color: Colors.blue,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.airplane_ticket,color: Colors.blue,),
+            icon: Icon(
+              Icons.airplane_ticket,
+              color: Colors.blue,
+            ),
             label: 'Ingressos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,color: Colors.blue,),
+            icon: Icon(
+              Icons.person,
+              color: Colors.blue,
+            ),
             label: 'Perfil',
           ),
         ],

@@ -7,6 +7,7 @@ import 'package:telas2/components/meses_home.dart';
 //import 'package:telas2/components/task.dart';
 import 'package:telas2/screens/infos.dart';
 import '../data/Event.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

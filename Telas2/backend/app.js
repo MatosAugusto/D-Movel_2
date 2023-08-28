@@ -35,7 +35,8 @@ app.get('/event', async (req, res) => {
             res.json(eventsTitle);
         }
         else{
-            res.status(404).send('Event not found');
+            //res.status(404).send('Event not found'); //Removido para não dar erro de exceção
+            res.json(eventsTitle);
         }   
     }
     else if (req.query.month && req.query.year) {
@@ -45,7 +46,8 @@ app.get('/event', async (req, res) => {
             res.json(eventsOfYearMonth);
         }
         else{
-            res.status(404).send('Event not found');
+            //res.status(404).send('Event not found'); //erro foi removido para não dar erro de exceção
+            res.json(eventsOfYearMonth);
         }   
     }
     else if (req.query.title && req.query.month && req.query.year) {
