@@ -72,3 +72,10 @@ Content-Type: application/json
   }
 
 
+###
+
+GET http://localhost:3000/ticket
+
+###
+
+GET http://localhost:3000/ticket?email=jose@gmail.com

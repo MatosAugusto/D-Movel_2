@@ -111,7 +111,7 @@ app.get('/ticket', async (req, res) => {
     }
     else{
         console.log('get tickets');
-        res.json(users);
+        res.json(tickets);
     }
     
 });
