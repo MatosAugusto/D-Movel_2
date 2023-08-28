@@ -52,7 +52,7 @@ class TaskDAO {
   Future<List<Task>> findAll() async {
     final Database bancoDeDados = await getDatabase();
     final List<Map<String, dynamic>> result =
-    await bancoDeDados.query(_tablename);
+        await bancoDeDados.query(_tablename);
     return toList(result);
   }
 
@@ -108,8 +108,8 @@ class TaskDAO {
   }
 }
 
-String ultimoDia(String month){
-  switch(month){
+String ultimoDia(String month) {
+  switch (month) {
     case "01":
       return "31";
     case "02":

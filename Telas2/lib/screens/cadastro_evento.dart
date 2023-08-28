@@ -1,13 +1,13 @@
-import 'dart:math';
+//import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:telas2/components/data_evento.dart';
 import 'package:telas2/components/horario_evento.dart';
-import 'package:telas2/data/task_dao.dart';
-import 'package:telas2/components/task.dart';
+// import 'package:telas2/data/task_dao.dart';
+// import 'package:telas2/components/task.dart';
+import 'package:telas2/data/EventDAO.dart';
 
 class CadastroEvento extends StatefulWidget {
-
   const CadastroEvento({super.key});
 
   @override
@@ -22,6 +22,12 @@ class _CadastroEventoState extends State<CadastroEvento> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController contactController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController dayController = TextEditingController();
+  TextEditingController monthController = TextEditingController();
+  TextEditingController yearController = TextEditingController();
+  // late String day;
+  // late String month;
+  // late String year;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -179,15 +185,22 @@ class _CadastroEventoState extends State<CadastroEvento> {
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          TaskDAO().save(Task(
+                          String dateSplit = dateController.text;
+                          List<String> dateParts = dateSplit.split('-');
+                          print(dateParts);
+                          dayController.text = dateParts[2];
+                          monthController.text = dateParts[1];
+                          yearController.text = dateParts[0];
+                          EventDAO().createEvent(
                               titleController.text,
-                              dateController.text,
+                              dayController.text,
+                              monthController.text,
+                              yearController.text,
                               hourController.text,
                               localController.text,
                               descriptionController.text,
                               contactController.text,
-                              nameController.text
-                          ));
+                              nameController.text);
 
                           await Future.delayed(Duration(milliseconds: 500));
                           Navigator.pop(context);
@@ -203,6 +216,5 @@ class _CadastroEventoState extends State<CadastroEvento> {
         ),
       ),
     );
-
   }
 }

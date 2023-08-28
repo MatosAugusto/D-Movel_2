@@ -1,0 +1,74 @@
+GET http://localhost:3000/event
+
+###
+
+POST http://localhost:3000/event
+Content-Type: application/json
+
+  {
+    "id": 3,
+    "title": "Aula",
+    "day": "13",
+    "month": "11",
+    "year": "2023",
+    "hour": "15:00",
+    "local": "UFSCar",
+    "description": "na BCo",
+    "contact": "admin@gmail.com",
+    "contactname": "admin"
+  }
+
+###
+
+DELETE http://localhost:3000/event/2
+
+###
+
+GET http://localhost:3000/event/1
+
+###
+
+GET http://localhost:3000/event?month=12&year=2023
+
+###
+
+GET http://localhost:3000/event?title=Aula
+
+###
+
+GET http://127.0.1.1:3000/event?title=Orquestra
+
+###
+
+GET http://localhost:3000/user
+
+###
+
+GET http://localhost:3000/user?email=admin@gmail.com&password=admin
+
+###
+
+POST http://localhost:3000/user
+Content-Type: application/json
+
+  {
+    "id": 3,
+    "username": "Teste",
+    "email": "teste@gmail.com",
+    "password": "teste"
+    
+  }
+
+###
+POST http://localhost:3000/user
+Content-Type: application/json
+
+  {
+    "id": 4,
+    "username": "Teste",
+    "email": "admin@gmail.com",
+    "password": "admin"
+    
+  }
+
+

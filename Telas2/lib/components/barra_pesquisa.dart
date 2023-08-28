@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:telas2/components/task.dart';
-import 'package:telas2/data/task_dao.dart';
+// import 'package:telas2/components/task.dart';
+// import 'package:telas2/data/task_dao.dart';
 import 'package:telas2/screens/infos.dart';
+import '../data/Event.dart';
+import '../data/EventDAO.dart';
 
 class BarraPesquisa extends StatefulWidget {
   const BarraPesquisa({super.key});
@@ -73,10 +75,11 @@ class SearchBarDelegate extends SearchDelegate<String> {
         child: Text('Sugestões de pesquisa'),
       );
     } else {
-      // Chamar o método 'find' do DAO e obter as sugestões de tarefas
-      final taskDao = TaskDAO();
-      return FutureBuilder<List<Task>>(
-        future: taskDao.find(query),
+      print("A query:" + query);
+      // Chamar o método 'find' do DAO e obter as sugestões de eventos
+      final eventDAO = EventDAO();
+      return FutureBuilder<List<Event>>(
+        future: eventDAO.fetchAllEventTitle(query),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final suggestions = snapshot.data!;
@@ -86,19 +89,19 @@ class SearchBarDelegate extends SearchDelegate<String> {
                 final suggestion = suggestions[index];
                 return ListTile(
                   title: Text(
-                    suggestion.titulo,
+                    suggestion.title,
                     style: TextStyle(
                       fontSize: 26.0,
                     ),
                   ),
                   onTap: () {
                     // Atualizar a consulta de pesquisa com o título da sugestão
-                    query = suggestion.titulo;
+                    query = suggestion.title;
                     // Realizar a pesquisa de resultados quando a sugestão for selecionada
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Infos(titulo: suggestion.titulo),
+                        builder: (context) => Infos(titulo: suggestion.title),
                       ),
                     );
                   },

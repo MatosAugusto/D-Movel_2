@@ -11,7 +11,8 @@ class Task extends StatefulWidget {
   final String contato;
   final String nome;
 
-  const Task(this.titulo, this.data, this.hora, this.local, this.descricao, this.contato, this.nome,
+  const Task(this.titulo, this.data, this.hora, this.local, this.descricao,
+      this.contato, this.nome,
       {super.key});
 
   @override
@@ -72,7 +73,9 @@ class _TaskState extends State<Task> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (contextNew) => Infos(titulo: widget.titulo,),
+                                  builder: (contextNew) => Infos(
+                                    titulo: widget.titulo,
+                                  ),
                                 ),
                               );
                             },

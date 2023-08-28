@@ -1,6 +1,56 @@
+// import 'package:flutter/material.dart';
+// import 'package:telas2/data/task_dao.dart';
+// import 'package:telas2/components/task.dart';
+
+// class Infos extends StatefulWidget {
+//   final String titulo;
+
+//   const Infos({required this.titulo, super.key});
+
+//   @override
+//   State<Infos> createState() => _InfosState();
+// }
+
+// class _InfosState extends State<Infos> {
+//   final TaskDAO _taskDAO = TaskDAO();
+//   late Task _task = Task("", "", "", "", "", "", ""); // Cria uma tarefa vazia
+//   bool _dataLoaded = false;
+
+//   final TextEditingController titleController = TextEditingController();
+//   final TextEditingController dateController = TextEditingController();
+//   final TextEditingController hourController = TextEditingController();
+//   final TextEditingController localController = TextEditingController();
+//   final TextEditingController descriptionController = TextEditingController();
+//   final TextEditingController contactController = TextEditingController();
+//   final TextEditingController nameController = TextEditingController();
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _fetchTaskInfo();
+//   }
+
+//   void _fetchTaskInfo() async {
+//     List<Task> tasks = await _taskDAO.find(widget.titulo);
+//     if (tasks.isNotEmpty) {
+//       setState(() {
+//         _task = tasks.first;
+//         titleController.text = _task.titulo;
+//         dateController.text = _task.data;
+//         hourController.text = _task.hora;
+//         localController.text = _task.local;
+//         descriptionController.text = _task.descricao;
+//         contactController.text = _task.contato;
+//         nameController.text = _task.nome;
+
+//         _dataLoaded = true;
+//       });
+//     }
+//   }
+
 import 'package:flutter/material.dart';
-import 'package:telas2/data/task_dao.dart';
-import 'package:telas2/components/task.dart';
+import '../data/EventDAO.dart';
+import '../data/Event.dart';
 
 class Infos extends StatefulWidget {
   final String titulo;
@@ -12,8 +62,8 @@ class Infos extends StatefulWidget {
 }
 
 class _InfosState extends State<Infos> {
-  final TaskDAO _taskDAO = TaskDAO();
-  late Task _task = Task("", "", "", "", "", "", ""); // Cria uma tarefa vazia
+  final EventDAO _eventDAO = EventDAO();
+  Event? _eventData; // Usando Event ao invés de Map
   bool _dataLoaded = false;
 
   final TextEditingController titleController = TextEditingController();
@@ -27,24 +77,29 @@ class _InfosState extends State<Infos> {
   @override
   void initState() {
     super.initState();
-    _fetchTaskInfo();
+    _fetchEventInfo();
   }
 
-  void _fetchTaskInfo() async {
-    List<Task> tasks = await _taskDAO.find(widget.titulo);
-    if (tasks.isNotEmpty) {
-      setState(() {
-        _task = tasks.first;
-        titleController.text = _task.titulo;
-        dateController.text = _task.data;
-        hourController.text = _task.hora;
-        localController.text = _task.local;
-        descriptionController.text = _task.descricao;
-        contactController.text = _task.contato;
-        nameController.text = _task.nome;
+  void _fetchEventInfo() async {
+    try {
+      List<Event> events = await _eventDAO.fetchAllEventTitle(widget.titulo);
+      if (events.isNotEmpty) {
+        setState(() {
+          _eventData = events.first;
+          titleController.text = _eventData?.title ?? "";
+          dateController.text =
+              "${_eventData?.day}/${_eventData?.month}/${_eventData?.year}";
+          hourController.text = _eventData?.hour ?? "";
+          localController.text = _eventData?.local ?? "";
+          descriptionController.text = _eventData?.description ?? "";
+          contactController.text = _eventData?.contact ?? "";
+          nameController.text = _eventData?.contactname ?? "";
 
-        _dataLoaded = true;
-      });
+          _dataLoaded = true;
+        });
+      }
+    } catch (e) {
+      print("Erro ao buscar dados do evento: $e");
     }
   }
 
@@ -67,133 +122,133 @@ class _InfosState extends State<Infos> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: titleController,
-                  style: TextStyle(color: Colors.black),
-                  // Text color
-                  decoration: const InputDecoration(
-                    labelText: 'Titulo do Evento',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: titleController,
+                    style: TextStyle(color: Colors.black),
+                    // Text color
+                    decoration: const InputDecoration(
+                      labelText: 'Titulo do Evento',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: dateController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    labelText: 'Data do Evento',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: dateController,
+                    style: TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Data do Evento',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: hourController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    labelText: 'Hora do Evento',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: hourController,
+                    style: TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Hora do Evento',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: localController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    labelText: 'Localização',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: localController,
+                    style: TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Localização',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: descriptionController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    labelText: 'Descricao',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: descriptionController,
+                    style: TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Descricao',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: contactController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    labelText: 'Contato',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: contactController,
+                    style: TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Contato',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              if(_dataLoaded)
+              if (_dataLoaded)
                 Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  enabled: false,
-                  controller: nameController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    labelText: 'Nome do Contato',
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white70,
-                    filled: true,
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    enabled: false,
+                    controller: nameController,
+                    style: TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Nome do Contato',
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
               /* Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
