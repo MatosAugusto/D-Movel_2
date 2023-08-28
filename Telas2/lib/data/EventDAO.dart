@@ -91,7 +91,7 @@ class EventDAO {
       }),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       return Event.fromJson(jsonDecode(response.body));

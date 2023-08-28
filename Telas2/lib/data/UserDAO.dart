@@ -22,7 +22,7 @@ class UserDAO {
       }),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       return User.fromJson(jsonDecode(response.body));
