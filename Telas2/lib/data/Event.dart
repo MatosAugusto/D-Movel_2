@@ -39,7 +39,7 @@ class Event {
   }
 
   Map<String, dynamic> toMap(Event event) {
-    final Map<String, dynamic> mapaDeEventos = Map();
+    final Map<String, dynamic> mapaDeEventos = {};
     mapaDeEventos[title] = event.title;
     mapaDeEventos[day] = event.day;
     mapaDeEventos[month] = event.month;

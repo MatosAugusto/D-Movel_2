@@ -6,7 +6,7 @@ import 'User.dart';
 //Classe DAO de usuario
 class UserDAO {
   //Cria um user
-  Future<User> createUser(String name, String email, String password) async {
+  Future<int> createUser(String username, String email, String password) async {
     const uuid = Uuid();
     String uuidv4 = uuid.v4();
     final response = await http.post(
@@ -16,7 +16,7 @@ class UserDAO {
       },
       body: jsonEncode(<String, String>{
         'id': uuidv4,
-        'name': name,
+        'username': username,
         'email': email,
         'password': password,
       }),
@@ -25,14 +25,18 @@ class UserDAO {
     if (response.statusCode == 200 || response.statusCode == 201) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
-      return User.fromJson(jsonDecode(response.body));
+      //return User.fromJson(jsonDecode(response.body));
+      return 0;
     } else if (response.statusCode == 409) {
       //Email já cadastrado
-      return User.fromJson(jsonDecode(response.body));
+      //return User.fromJson(jsonDecode(response.body));
+      return 1;
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
-      throw Exception('Failed to create user.');
+      //throw Exception('Failed to create user.');
+      //erro geral
+      return 2;
     }
   }
 
@@ -53,10 +57,10 @@ class UserDAO {
   // }
 
   // //Procurar todos os users com um titulo
-  // Future<List<User>> fetchAllUserTitle(String name) async {
-  //  // print("O nome pegou:" + name);
+  // Future<List<User>> fetchAllUserTitle(String username) async {
+  //  // print("O nome pegou:" + username);
   //   final response =
-  //       await http.get(Uri.parse('http://10.0.2.2:3000/user?name=$name'));
+  //       await http.get(Uri.parse('http://10.0.2.2:3000/user?username=$username'));
   //   print("Status response");
   //   print(response.statusCode);
   //   if (response.statusCode == 200) {
@@ -72,30 +76,51 @@ class UserDAO {
   //   }
   // }
 
-  // //Procurar um user pelo email
-  // Future<User> fetchUser(String email) async {
-  //   final response =
-  //       await http.get(Uri.parse('http://10.0.2.2:3000/user?email=$email'));
+  //Procurar um user pelo email
+  Future<List<User>> fetchUser(String email) async {
+    final response =
+        await http.get(Uri.parse('http://10.0.2.2:3000/user?email=$email'));
 
-  //   if (response.statusCode == 200) {
-  //     // If the server did return a 200 OK response,
-  //     // then parse the JSON.
-  //     return User.fromJson(jsonDecode(response.body));
-  //   } else {
-  //     // If the server did not return a 200 OK response,
-  //     // then throw an exception.
-  //     throw Exception('Failed to load user');
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      final List<dynamic> usersList = jsonDecode(response.body);
+      return usersList.map((userMap) => User.fromJson(userMap)).toList();
+      //return User.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load user');
+    }
+  }
 
-  // Future<http.Response> updateAlbum(String name) {
+  Future<List<User>> findByEmailAndPassword(
+      String email, String password) async {
+    final response = await http.get(
+        Uri.parse('http://10.0.2.2:3000/user?email=$email&password=$password'));
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      // print(email);
+      // print(password);
+      final List<dynamic> usersList = jsonDecode(response.body);
+      return usersList.map((userMap) => User.fromJson(userMap)).toList();
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+
+      throw Exception('Failed to load user');
+    }
+  }
+
+  // Future<http.Response> updateAlbum(String username) {
   //   return http.put(
   //     Uri.parse('http://10.0.2.2:3000/user/'),
   //     headers: <String, String>{
   //       'Content-Type': 'application/json; charset=UTF-8',
   //     },
   //     body: jsonEncode(<String, String>{
-  //       'name': name,
+  //       'username': username,
   //     }),
   //   );
   // }
@@ -125,7 +150,7 @@ class UserDAO {
   //   final List<User> users = [];
   //   for (Map<String, dynamic> linha in mapaDeUsers) {
   //     final User user = User(
-  //       linha[name],
+  //       linha[username],
   //       linha[date],
   //       linha[hour],
   //       linha[local],
@@ -144,21 +169,4 @@ class UserDAO {
 //     final List<Map<String, dynamic>> result = futureUser;
 //     return toList(result);
 //   }
-
-  Future<List<User>> findByEmailAndPassword(
-      String email, String password) async {
-    final response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/user?email=$email&password=$password'));
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      final List<dynamic> usersList = jsonDecode(response.body);
-      return usersList.map((userMap) => User.fromJson(userMap)).toList();
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load user');
-    }
-  }
 }

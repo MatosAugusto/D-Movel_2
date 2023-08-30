@@ -188,7 +188,7 @@ class _CadastroEventoState extends State<CadastroEvento> {
                         if (_formKey.currentState!.validate()) {
                           String dateSplit = dateController.text;
                           List<String> dateParts = dateSplit.split('-');
-                          print(dateParts);
+                          //print(dateParts);
                           dayController.text = dateParts[2];
                           monthController.text = dateParts[1];
                           yearController.text = dateParts[0];
@@ -203,11 +203,12 @@ class _CadastroEventoState extends State<CadastroEvento> {
                               contactController.text,
                               nameController.text);
 
-                          await Future.delayed(Duration(milliseconds: 500));
+                          await Future.delayed(const Duration(milliseconds: 500));
                           Navigator.pop(context);
                         }
                       },
-                      child: const Text('Criar Evento'),
+                      child:
+                          Text(AppLocalizations.of(context).cadastrar_evento),
                     ),
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telas2/screens/home.dart';
+import 'package:telas2/screens/perfil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
@@ -14,16 +15,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Event',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -31,11 +34,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     // Coloque aqui os widgets das telas que deseja exibir
-    Home(),
-    Text('Ingressos'),
-    Text('Perfil'),
+    const Home(),
+    const Text('Ingressos'),
+    const Profile(),
   ];
 
   void _onItemTapped(int index) {
@@ -55,27 +58,27 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.home,
-              color: Colors.blue,
+              color: Colors.red,
             ),
             label: AppLocalizations.of(context).inicio,
           ),
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.airplane_ticket,
-              color: Colors.blue,
+              color: Colors.red,
             ),
             label: AppLocalizations.of(context).ingressos,
           ),
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.person,
-              color: Colors.blue,
+              color: Colors.red,
             ),
             label: AppLocalizations.of(context).perfil,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.red,
         onTap: _onItemTapped,
       ),
     );

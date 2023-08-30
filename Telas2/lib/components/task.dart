@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:telas2/data/task_dao.dart';
 import 'package:telas2/screens/infos.dart';
 
 class Task extends StatefulWidget {

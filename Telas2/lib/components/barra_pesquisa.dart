@@ -17,7 +17,7 @@ class _BarraPesquisaState extends State<BarraPesquisa> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.search),
+      icon: const Icon(Icons.search),
       onPressed: () {
         showSearch(context: context, delegate: SearchBarDelegate());
       },
@@ -30,7 +30,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -41,7 +41,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, query);
       },
@@ -64,7 +64,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
 
     close(context, query);
 
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(),
     );
   }
@@ -76,7 +76,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
         child: Text(AppLocalizations.of(context).sugestao_pesquisa),
       );
     } else {
-      print("A query:" + query);
+      print("A query:$query");
       // Chamar o método 'find' do DAO e obter as sugestões de eventos
       final eventDAO = EventDAO();
       return FutureBuilder<List<Event>>(
@@ -91,7 +91,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
                 return ListTile(
                   title: Text(
                     suggestion.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 26.0,
                     ),
                   ),
@@ -113,7 +113,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
             return Center(
                 child: Text(AppLocalizations.of(context).erro_sugestao));
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       );

@@ -22,7 +22,7 @@ class TimePickerExampleState extends State<TimePickerExample> {
     if (picked != null && picked != _selectedTime) {
       setState(() {
         _selectedTime = picked;
-        final formattedTime = "${_selectedTime.format(context)}";
+        final formattedTime = _selectedTime.format(context);
         hourController.text = formattedTime; // Atualiza o campo de texto
         widget.onHourSelected(formattedTime); // Chama a função de retorno
       });
@@ -31,7 +31,7 @@ class TimePickerExampleState extends State<TimePickerExample> {
 
   @override
   Widget build(BuildContext context) {
-    final formattedTime = "${_selectedTime.format(context)}";
+    final formattedTime = _selectedTime.format(context);
     hourController.text = formattedTime; // Atualiza o campo de texto
     widget.onHourSelected(formattedTime);
     return Column(
@@ -41,13 +41,13 @@ class TimePickerExampleState extends State<TimePickerExample> {
           readOnly: true,
           onTap: () => _selectTime(context),
           controller: hourController = TextEditingController(
-            text: "${_selectedTime.format(context)}",
+            text: _selectedTime.format(context),
           ),
           decoration: InputDecoration(
             labelText: AppLocalizations.of(context).hora_evento,
             floatingLabelAlignment: FloatingLabelAlignment.center,
             //suffixIcon: Icon(Icons.access_time),
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
             hintText: AppLocalizations.of(context).definir_hora,
             fillColor: Colors.white70,
             filled: true,

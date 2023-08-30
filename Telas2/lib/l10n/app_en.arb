@@ -31,5 +31,17 @@
     "setembro": "September",
     "outubro": "October",
     "novembro": "November",
-    "dezembro": "December"
+    "dezembro": "December",
+    "entrar": "Login",
+    "sair": "Logout",
+    "configuracoes": "Settings",
+    "mudar_senha": "Change password",
+    "nome_usuario": "Name",
+    "email_usuario": "Email",
+    "senha_usuario": "Password",
+    "cadastrar_usuario": "Register User",
+    "email_existe": "This email already exists",
+    "erro_cadastrar_usuario": "Error in user's registration",
+    "email_nao_cadastrado": "Email not registered",
+    "usuario_cadastrado": "User registered"
 }

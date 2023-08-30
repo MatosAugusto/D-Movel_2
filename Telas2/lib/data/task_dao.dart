@@ -38,7 +38,7 @@ class TaskDAO {
   }
 
   Map<String, dynamic> toMap(Task tarefa) {
-    final Map<String, dynamic> mapaDeTarefas = Map();
+    final Map<String, dynamic> mapaDeTarefas = {};
     mapaDeTarefas[_title] = tarefa.titulo;
     mapaDeTarefas[_date] = tarefa.data;
     mapaDeTarefas[_hour] = tarefa.hora;
@@ -86,8 +86,8 @@ class TaskDAO {
   Future<List<Task>> findByMonthAndYear(String year, String month) async {
     final Database bancoDeDados = await getDatabase();
 
-    final String dataInit = year + "-" + month + "-01";
-    final String dataFinal = year + "-" + month + "-" + ultimoDia(month);
+    final String dataInit = "$year-$month-01";
+    final String dataFinal = "$year-$month-${ultimoDia(month)}";
 
     final List<Map<String, dynamic>> result = await bancoDeDados.query(
       _tablename,

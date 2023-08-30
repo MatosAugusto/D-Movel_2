@@ -113,7 +113,7 @@ class _InfosState extends State<Infos> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
         title: Text(AppLocalizations.of(context).informacoes_evento),
       ),
@@ -131,12 +131,12 @@ class _InfosState extends State<Infos> {
                     readOnly: true,
                     enabled: false,
                     controller: titleController,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                     // Text color
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).titulo_evento,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -144,7 +144,7 @@ class _InfosState extends State<Infos> {
                 ),
               if (_dataLoaded)
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     textAlign: TextAlign.center,
                     readOnly: true,
@@ -154,7 +154,7 @@ class _InfosState extends State<Infos> {
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).data_evento,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -172,7 +172,7 @@ class _InfosState extends State<Infos> {
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).hora_evento,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -190,7 +190,7 @@ class _InfosState extends State<Infos> {
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).localizacao,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -208,7 +208,7 @@ class _InfosState extends State<Infos> {
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).descricao,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -226,7 +226,7 @@ class _InfosState extends State<Infos> {
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).contato,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),
@@ -244,7 +244,7 @@ class _InfosState extends State<Infos> {
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).nomecontato,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       fillColor: Colors.white70,
                       filled: true,
                     ),

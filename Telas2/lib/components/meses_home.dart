@@ -28,18 +28,18 @@ class MonthYearSelectorState extends State<MonthYearSelector> {
       children: [
         IconButton(
           onPressed: () => _changeMonth(-1),
-          icon: Icon(Icons.arrow_left),
+          icon: const Icon(Icons.arrow_left),
           iconSize: 36,
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         Text(
           '${_getMonthName(selectedDate.month)} ${selectedDate.year}',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         IconButton(
           onPressed: () => _changeMonth(1),
-          icon: Icon(Icons.arrow_right),
+          icon: const Icon(Icons.arrow_right),
           iconSize: 36,
         ),
       ],

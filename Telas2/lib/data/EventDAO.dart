@@ -120,7 +120,7 @@ class EventDAO {
 
   //Procurar todos os eventos com um titulo
   Future<List<Event>> fetchAllEventTitle(String title) async {
-    print("O titulo pegou:" + title);
+    print("O titulo pegou:$title");
     final response =
         await http.get(Uri.parse('http://10.0.2.2:3000/event?title=$title'));
     print("Status response");

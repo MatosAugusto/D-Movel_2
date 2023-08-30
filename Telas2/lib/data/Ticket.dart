@@ -39,7 +39,7 @@ class Ticket {
   }
 
   Map<String, dynamic> toMap(Ticket ticket) {
-    final Map<String, dynamic> mapaDeTickets = Map();
+    final Map<String, dynamic> mapaDeTickets = {};
     mapaDeTickets[title] = ticket.title;
     mapaDeTickets[day] = ticket.day;
     mapaDeTickets[month] = ticket.month;

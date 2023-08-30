@@ -71,21 +71,21 @@ app.get('/event', async (req, res) => {
 //Get method user by email, password
 app.get('/user', async (req, res) => {
 	
-    if (req.query.email) {
-        console.log("Tem query: email=" + req.query.email)
-        const usersEmail= users.filter(usr => usr.email === req.query.email)
-        if(usersEmail.length > 0){
-            res.json(usersEmail);
-        }
-        else{
-            res.status(404).send('User not found');
-        }   
-    }
-    else if (req.query.email && req.query.password) {
+    if (req.query.email && req.query.password) {
         console.log("Tem query: email=" + req.query.email + ", password=" + req.query.password)
         const usersEmailPassword = users.filter(usr => usr.email === req.query.email && usr.password === req.query.password)
         if(usersEmailPassword.length > 0){
             res.json(usersEmailPassword);
+        }
+        else{
+            res.status(404).send('User not found');
+        }  
+    }
+    else if (req.query.email) {
+        console.log("Tem query: email=" + req.query.email)
+        const usersEmail= users.filter(usr => usr.email === req.query.email)
+        if(usersEmail.length > 0){
+            res.json(usersEmail);
         }
         else{
             res.status(404).send('User not found');
@@ -248,7 +248,7 @@ app.post('/user', async (req, res) => {
     console.log("Email:" + usersTest.email);
     if (usersTest.length > 0) {  
         console.log("Email already exists");
-        res.status(409).send('Email already exists');
+        res.status(409);
     }
     else{
         const user = req.body;

@@ -31,5 +31,17 @@
     "setembro": "Setembro",
     "outubro": "Outubro",
     "novembro": "Novembro",
-    "dezembro": "Dezembro"
+    "dezembro": "Dezembro",
+    "entrar": "Entrar",
+    "sair": "Sair",
+    "configuracoes": "Configurações",
+    "mudar_senha": "Alterar senha",
+    "nome_usuario": "Nome",
+    "email_usuario": "Email",
+    "senha_usuario": "Senha",
+    "cadastrar_usuario": "Cadastrar Usuário",
+    "email_existe": "Esse email já existe",
+    "erro_cadastrar_usuario": "Erro ao cadastrar usuario",
+    "email_nao_cadastrado": "Email não cadastrado",
+    "usuario_cadastrado": "Usuário Cadastrado"
 }

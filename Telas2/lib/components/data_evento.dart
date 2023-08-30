@@ -48,7 +48,7 @@ class DatePickerExampleState extends State<DatePickerExample> {
           decoration: InputDecoration(
             labelText: AppLocalizations.of(context).selecionar_data,
             floatingLabelAlignment: FloatingLabelAlignment.center,
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
             hintText: AppLocalizations.of(context).definir_data,
             fillColor: Colors.white70,
             filled: true,
