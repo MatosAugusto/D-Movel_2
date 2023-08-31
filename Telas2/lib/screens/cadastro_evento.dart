@@ -1,11 +1,11 @@
 //import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:telas2/components/data_evento.dart';
-import 'package:telas2/components/horario_evento.dart';
-// import 'package:telas2/data/task_dao.dart';
-// import 'package:telas2/components/task.dart';
-import 'package:telas2/data/EventDAO.dart';
+import 'package:Eventos/components/data_evento.dart';
+import 'package:Eventos/components/horario_evento.dart';
+// import 'package:Eventos/data/task_dao.dart';
+// import 'package:Eventos/components/task.dart';
+import 'package:Eventos/data/EventDAO.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CadastroEvento extends StatefulWidget {
@@ -203,7 +203,8 @@ class _CadastroEventoState extends State<CadastroEvento> {
                               contactController.text,
                               nameController.text);
 
-                          await Future.delayed(const Duration(milliseconds: 500));
+                          await Future.delayed(
+                              const Duration(milliseconds: 500));
                           Navigator.pop(context);
                         }
                       },

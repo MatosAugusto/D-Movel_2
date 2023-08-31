@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:telas2/data/User.dart';
-// import 'package:telas2/data/task_dao.dart';
-// import 'package:telas2/components/task.dart';
-import 'package:telas2/data/UserDAO.dart';
+import 'package:Eventos/data/User.dart';
+// import 'package:Eventos/data/task_dao.dart';
+// import 'package:Eventos/components/task.dart';
+import 'package:Eventos/data/UserDAO.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CadastroUsuario extends StatefulWidget {

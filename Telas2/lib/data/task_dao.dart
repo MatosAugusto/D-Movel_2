@@ -1,5 +1,5 @@
-import 'package:telas2/components/task.dart';
-import 'package:telas2/data/database.dart';
+import 'package:Eventos/components/task.dart';
+import 'package:Eventos/data/database.dart';
 import 'package:sqflite/sqflite.dart';
 
 class TaskDAO {

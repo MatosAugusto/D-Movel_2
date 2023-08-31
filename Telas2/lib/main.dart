@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:telas2/screens/home.dart';
-import 'package:telas2/screens/perfil.dart';
+import 'package:Eventos/screens/home.dart';
+import 'package:Eventos/screens/perfil.dart';
+import 'package:Eventos/screens/tickets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Event',
+      title: 'Eventos',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
@@ -37,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     // Coloque aqui os widgets das telas que deseja exibir
     const Home(),
-    const Text('Ingressos'),
+    const Tickets(),
     const Profile(),
   ];
 

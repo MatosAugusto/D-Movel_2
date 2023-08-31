@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:telas2/data/EventDAO.dart';
-//import 'package:telas2/data/task_dao.dart';
-import 'package:telas2/screens/cadastro_evento.dart';
-import 'package:telas2/components/barra_pesquisa.dart';
-import 'package:telas2/components/meses_home.dart';
-//import 'package:telas2/components/task.dart';
-import 'package:telas2/screens/infos.dart';
+import 'package:Eventos/data/EventDAO.dart';
+//import 'package:Eventos/data/task_dao.dart';
+import 'package:Eventos/screens/cadastro_evento.dart';
+import 'package:Eventos/components/barra_pesquisa.dart';
+import 'package:Eventos/components/meses_home.dart';
+//import 'package:Eventos/components/task.dart';
+import 'package:Eventos/screens/infos.dart';
 import '../data/Event.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -180,9 +180,7 @@ class _HomeState extends State<Home> {
                                                                   SizedBox(
                                                                     width: 200,
                                                                     child: Text(
-                                                                      "${items[index].day}/${items[index]
-                                                                              .month}/${items[index]
-                                                                              .year}", //ajustar para pegar dia, mês e ano
+                                                                      "${items[index].day}/${items[index].month}/${items[index].year}", //ajustar para pegar dia, mês e ano
                                                                       style:
                                                                           const TextStyle(
                                                                         fontSize:
@@ -370,9 +368,7 @@ class _HomeState extends State<Home> {
                                                                   SizedBox(
                                                                     width: 200,
                                                                     child: Text(
-                                                                      "${items[index].day}/${items[index]
-                                                                              .month}/${items[index]
-                                                                              .year}", //ajustar para pegar dia, mês e ano
+                                                                      "${items[index].day}/${items[index].month}/${items[index].year}", //ajustar para pegar dia, mês e ano
                                                                       style:
                                                                           const TextStyle(
                                                                         fontSize:
@@ -548,10 +544,7 @@ class _HomeState extends State<Home> {
                                                               SizedBox(
                                                                 width: 200,
                                                                 child: Text(
-                                                                  "${items[index]
-                                                                          .day}/${items[index]
-                                                                          .month}/${items[index]
-                                                                          .year}", //ajustar para pegar dia, mês e ano
+                                                                  "${items[index].day}/${items[index].month}/${items[index].year}", //ajustar para pegar dia, mês e ano
                                                                   style:
                                                                       const TextStyle(
                                                                     fontSize:

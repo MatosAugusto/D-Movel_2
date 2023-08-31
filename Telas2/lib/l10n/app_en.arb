@@ -42,6 +42,10 @@
     "cadastrar_usuario": "Register User",
     "email_existe": "This email already exists",
     "erro_cadastrar_usuario": "Error in user's registration",
-    "email_nao_cadastrado": "Email not registered",
-    "usuario_cadastrado": "User registered"
+    "email_nao_cadastrado": "Wrong Email or password",
+    "usuario_cadastrado": "User registered",
+    "erro_ingresso": "Error in loading tickets",
+    "ingresso_nao_encontrado": "Tickets not found",
+    "meus_ingressos": "My Tickets",
+    "comprar_ingresso": "Buy Ticket"
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:telas2/screens/infos.dart';
+import 'package:Eventos/screens/infos.dart';
 
 class Task extends StatefulWidget {
   final String titulo;

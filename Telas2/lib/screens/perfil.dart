@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:telas2/screens/login.dart';
+import 'package:Eventos/screens/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
@@ -13,15 +13,15 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   DateTime selectedDate = DateTime.now();
   bool isLogin = false;
-  late String username = "Username";
-  late String email = "email@email.com";
+  late String username = "";
+  late String email = "";
   late String password = "";
   late SharedPreferences prefs;
 
   @override
   void initState() {
     super.initState();
-    checkUserLoginState();
+    //checkUserLoginState();
   }
 
   // void checkUserLoginState() async {
@@ -41,30 +41,19 @@ class _ProfileState extends State<Profile> {
   Future<void> checkUserLoginState() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      isLogin = (prefs.getBool('isLogin') == true ? true : false);
-      username = (prefs.getString('username') ?? "Username");
-      email = (prefs.getString('email') ?? "email@email.com");
-      password = (prefs.getString('password') ?? "");
-    });
-  }
-
-  void alterUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isLogin = (prefs.getBool('isLogin') == false ? true : false);
+      isLogin = (prefs.getBool('isLogin') ?? true);
       prefs.setBool('isLogin', isLogin);
-      print(prefs.getBool('isLogin'));
       username = (prefs.getString('username') ?? "Username");
       email = (prefs.getString('email') ?? "email@email.com");
       password = (prefs.getString('password') ?? "");
-      print(prefs.getString('username'));
     });
   }
 
+  //Logout
   void removeUser() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      isLogin = (prefs.getBool('isLogin') == true ? false : false);
+      isLogin = false;
       prefs.setBool('isLogin', isLogin);
       print(prefs.getBool('isLogin'));
       prefs.remove("username");
@@ -73,7 +62,7 @@ class _ProfileState extends State<Profile> {
       username = (prefs.getString('username') ?? "Username");
       email = (prefs.getString('email') ?? "email@email.com");
       password = (prefs.getString('password') ?? "");
-      print(prefs.getString('email'));
+      print("Preferences: ${prefs.getString('email')}");
     });
   }
 
@@ -83,7 +72,7 @@ class _ProfileState extends State<Profile> {
     //throw UnimplementedError();
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-    print("email:$email");
+    checkUserLoginState();
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context).perfil),
@@ -143,7 +132,6 @@ class _ProfileState extends State<Profile> {
                           builder: (contextNew) => const Login(),
                         ),
                       );
-                      alterUser;
                     },
                     child: Text(AppLocalizations.of(context).entrar),
                   ),

@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
-// import 'package:telas2/data/task_dao.dart';
-// import 'package:telas2/components/task.dart';
+// import 'package:Eventos/data/task_dao.dart';
+// import 'package:Eventos/components/task.dart';
 
 // class Infos extends StatefulWidget {
 //   final String titulo;
@@ -49,9 +49,12 @@
 //   }
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../data/EventDAO.dart';
 import '../data/Event.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../data/TicketDAO.dart';
 
 class Infos extends StatefulWidget {
   final String titulo;
@@ -73,12 +76,17 @@ class _InfosState extends State<Infos> {
   final TextEditingController localController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController contactnameController = TextEditingController();
+  late SharedPreferences prefs;
+  String _userEmail = '';
+  String _username = '';
+  bool isLogin = false;
 
   @override
   void initState() {
     super.initState();
     _fetchEventInfo();
+    _loadUser();
   }
 
   void _fetchEventInfo() async {
@@ -94,7 +102,7 @@ class _InfosState extends State<Infos> {
           localController.text = _eventData?.local ?? "";
           descriptionController.text = _eventData?.description ?? "";
           contactController.text = _eventData?.contact ?? "";
-          nameController.text = _eventData?.contactname ?? "";
+          contactnameController.text = _eventData?.contactname ?? "";
 
           _dataLoaded = true;
         });
@@ -104,8 +112,47 @@ class _InfosState extends State<Infos> {
     }
   }
 
+  Future<void> _loadUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isLogin = (prefs.getBool('isLogin') ?? false);
+      print(isLogin);
+      print(prefs.getString('username'));
+      print(prefs.getString('email'));
+      _userEmail = prefs.getString('email') ?? '';
+      _username = prefs.getString('username') ?? '';
+    });
+  }
+  // void _loadUser() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   setState() {
+  //     isLogin = (prefs.getBool('isLogin') == true ? true : false);
+  //     _userEmail = prefs.getString('email') ?? '';
+  //     print(prefs.getString('email'));
+  //     _username = prefs.getString('username') ?? '';
+  //   }
+  // }
+
+  void _buyTicket() {
+    // Assuming you have a TicketDAO with a createTicket method
+    TicketDAO ticketDAO = TicketDAO();
+    if (_eventData != null) {
+      ticketDAO.createTicket(
+          _eventData!.title,
+          _eventData!.day,
+          _eventData!.month,
+          _eventData!.year,
+          _eventData!.hour,
+          _eventData!.contact,
+          _eventData!.contactname,
+          _userEmail,
+          _username);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    //_loadUser();
     print("Informações do Evento");
     return Scaffold(
       appBar: AppBar(
@@ -239,7 +286,7 @@ class _InfosState extends State<Infos> {
                     textAlign: TextAlign.center,
                     readOnly: true,
                     enabled: false,
-                    controller: nameController,
+                    controller: contactnameController,
                     style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context).nomecontato,
@@ -286,6 +333,17 @@ class _InfosState extends State<Infos> {
                           ),
                         ),
                       ),*/ // Inserção de imagem só se der tempo
+              if (_dataLoaded && isLogin)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _buyTicket();
+                      Navigator.pop(context);
+                    },
+                    child: Text(AppLocalizations.of(context).comprar_ingresso),
+                  ),
+                ),
             ],
           ),
         ),

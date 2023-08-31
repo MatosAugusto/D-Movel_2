@@ -18,9 +18,9 @@ app.get('/reset', async (req, res) => {
     console.log('reset');
     events = initEvents();
     users = initUsers();
-    res.json({ message: 'events reset' });
-    res.json({ message: 'users reset' });
-    res.json({ message: 'tickets reset' });
+    res.json({ message: 'reset' });
+    // res.json({ message: 'users reset' });
+    // res.json({ message: 'tickets reset' });
 
 });
 
@@ -108,7 +108,8 @@ app.get('/ticket', async (req, res) => {
             res.json(ticketsEmail);
         }
         else{
-            res.status(404).send('Ticket not found');
+            //res.status(404).send('Ticket not found');
+            res.json(ticketsEmail);
         }   
     }
     else{
