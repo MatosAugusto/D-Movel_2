@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:telas2/screens/cadastro_usuario.dart';
-import 'package:telas2/data/UserDAO.dart';
-import 'package:telas2/data/User.dart';
+import 'package:Eventos/screens/cadastro_usuario.dart';
+import 'package:Eventos/data/UserDAO.dart';
+import 'package:Eventos/data/User.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Login extends StatefulWidget {

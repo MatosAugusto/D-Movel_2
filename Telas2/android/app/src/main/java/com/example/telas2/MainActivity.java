@@ -1,4 +1,4 @@
-package com.example.telas2;
+package com.example.Eventos;
 
 import io.flutter.embedding.android.FlutterActivity;
 

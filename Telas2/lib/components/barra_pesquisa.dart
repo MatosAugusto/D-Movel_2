@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:telas2/components/task.dart';
-// import 'package:telas2/data/task_dao.dart';
-import 'package:telas2/screens/infos.dart';
+// import 'package:Eventos/components/task.dart';
+// import 'package:Eventos/data/task_dao.dart';
+import 'package:Eventos/screens/infos.dart';
 import '../data/Event.dart';
 import '../data/EventDAO.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -42,6 +42,10 @@
     "cadastrar_usuario": "Cadastrar Usuário",
     "email_existe": "Esse email já existe",
     "erro_cadastrar_usuario": "Erro ao cadastrar usuario",
-    "email_nao_cadastrado": "Email não cadastrado",
-    "usuario_cadastrado": "Usuário Cadastrado"
+    "email_nao_cadastrado": "Email ou senha incorretos",
+    "usuario_cadastrado": "Usuário Cadastrado",
+    "erro_ingresso": "Erro ao carregar os ingressos",
+    "ingresso_nao_encontrado": "Nenhum ingresso encontrado",
+    "meus_ingressos": "Meus Ingressos",
+    "comprar_ingresso": "Comprar Ingresso"
 }

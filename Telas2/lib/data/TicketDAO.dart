@@ -166,6 +166,7 @@ class TicketDAO {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
+      print(email);
       final List<dynamic> ticketsList = jsonDecode(response.body);
       return ticketsList
           .map((ticketMap) => Ticket.fromJson(ticketMap))
@@ -173,7 +174,11 @@ class TicketDAO {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load ticket');
+      //throw Exception('Failed to load ticket');
+      final List<dynamic> ticketsList = jsonDecode(response.body);
+      return ticketsList
+          .map((ticketMap) => Ticket.fromJson(ticketMap))
+          .toList();
     }
   }
 }
